@@ -636,6 +636,44 @@
   .mini-stat-label { font-size: 10.5px; color: var(--text-muted); margin-top: 3px; }
   .mini-stat-delta { font-size: 11px; color: var(--green); font-weight: 500; margin-top: 2px; }
 
+  /* ── SUPER ADMIN THEME ── */
+  .card-sa { border-left: 3px solid #8fa01c; }
+  .card-label-sa { color: #6e7b12; }
+  .badge-sa { background: rgba(143,160,28,0.1); color: #6e7b12; border: 1px solid rgba(143,160,28,0.3); }
+
+  .sa-sidebar {
+    background: #0d1929 !important;
+    border-right: 1px solid rgba(143,160,28,0.18) !important;
+  }
+  .sa-sidebar .portal-sidebar-logo {
+    color: #d8e0aa;
+    border-bottom-color: rgba(143,160,28,0.18);
+  }
+  .sa-sidebar .sidebar-group-label { color: rgba(143,160,28,0.55); }
+  .sa-sidebar .sidebar-item { color: #6a82a0; }
+  .sa-sidebar .sidebar-item:hover { background: rgba(143,160,28,0.08); color: #c8d44a; }
+  .sa-sidebar .sidebar-item.active {
+    background: rgba(143,160,28,0.14);
+    color: #b8ca2c;
+    border-right-color: #8fa01c;
+  }
+
+  .sa-main {
+    background: #111f30 !important;
+  }
+  .sa-main .portal-page-title { color: #e0e8b0; }
+  .sa-main .portal-page-sub { color: #5a7490; }
+  .sa-main .mini-stat {
+    background: #0d1929;
+    border-color: rgba(143,160,28,0.18);
+  }
+  .sa-main .mini-stat-val { color: #c8d44a; }
+  .sa-main .mini-stat-label { color: #5a7490; }
+  .sa-main .mini-stat-delta { color: #8fa01c; }
+  .sa-main .card { background: #0d1929; border-color: rgba(143,160,28,0.18); }
+  .sa-main .card-label-sa { color: #8fa01c; }
+  .sa-main .card-label-blue { color: #4a9dcc; }
+
   /* ── MOBILE SCREEN ── */
   .mobile-mockup {
     display: flex;
@@ -2761,17 +2799,17 @@
     <div class="section-header" style="margin-top:0;">
       <span class="section-title">Super Admin Portal — Internal Thrive / Optihealth Operations</span>
       <span class="section-line"></span>
-      <span class="badge badge-purple">Platform control</span>
+      <span class="badge badge-sa">Platform control</span>
     </div>
     <p style="font-size:13px;color:var(--text-secondary);margin-bottom:28px;max-width:860px;line-height:1.6;">
-      The Super Admin portal is an internal-only web application accessible exclusively to Thrive/Optihealth staff with the <strong style="color:#5b21b6;">super_admin</strong> role. It provides full visibility and control over every tenant, user, configuration setting, and system behaviour across the entire platform — without touching production code.
+      The Super Admin portal is an internal-only web application accessible exclusively to Thrive/Optihealth staff with the <strong style="color:#8fa01c;">super_admin</strong> role. It provides full visibility and control over every tenant, user, configuration setting, and system behaviour across the entire platform — without touching production code.
     </p>
 
     <!-- PORTAL MOCK -->
     <div class="portal-layout" style="margin-bottom:32px;">
-      <div class="portal-sidebar">
+      <div class="portal-sidebar sa-sidebar">
         <div class="portal-sidebar-logo">
-          <div style="width:28px;height:28px;background:linear-gradient(135deg,#6d28d9,#4f46e5);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0;">SA</div>
+          <div style="width:28px;height:28px;background:linear-gradient(135deg,#162a3e,#0d1f30);border:1px solid rgba(143,160,28,0.35);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#8fa01c;flex-shrink:0;letter-spacing:0.5px;">SA</div>
           Super Admin
         </div>
         <div class="sidebar-group-label">Platform</div>
@@ -2794,7 +2832,7 @@
         <div class="sidebar-item"><span class="icon">🔄</span> Data Tools</div>
         <div class="sidebar-item"><span class="icon">📣</span> Announcements</div>
       </div>
-      <div class="portal-main">
+      <div class="portal-main sa-main">
         <div class="portal-page-title">Platform Dashboard</div>
         <div class="portal-page-sub">Live snapshot across all tenants, users, and services</div>
         <div class="mini-stat-grid" style="grid-template-columns:repeat(5,1fr);">
@@ -2805,8 +2843,8 @@
           <div class="mini-stat"><div class="mini-stat-val">2</div><div class="mini-stat-label">Open Incidents</div></div>
         </div>
         <div class="grid-2" style="gap:12px;margin-top:4px;">
-          <div class="card card-purple" style="padding:16px;">
-            <div class="card-label card-label-purple">Recent Actions</div>
+          <div class="card card-sa" style="padding:16px;">
+            <div class="card-label card-label-sa">Recent Actions</div>
             <div style="font-size:12px;color:var(--text-secondary);display:flex;flex-direction:column;gap:7px;margin-top:8px;">
               <div>🏢 <strong>Acme Corp</strong> tenant suspended — billing lapse</div>
               <div>🚩 Flag <code style="font-size:11px;">ai_coaching_v2</code> enabled for 12 tenants</div>
@@ -2837,8 +2875,8 @@
 
     <div class="grid-3" style="margin-bottom:20px;">
 
-      <div class="card card-purple">
-        <div class="card-label card-label-purple">Tenant Management</div>
+      <div class="card card-sa">
+        <div class="card-label card-label-sa">Tenant Management</div>
         <ul class="feature-list" style="margin-top:8px;">
           <li>Create, configure and onboard new tenant organisations</li>
           <li>Suspend, reactivate or permanently delete tenants</li>
@@ -2909,8 +2947,8 @@
         </ul>
       </div>
 
-      <div class="card card-purple">
-        <div class="card-label card-label-purple">Platform Configuration</div>
+      <div class="card card-sa">
+        <div class="card-label card-label-sa">Platform Configuration</div>
         <ul class="feature-list" style="margin-top:8px;">
           <li>Global environment settings — timeouts, retry policies, limits</li>
           <li>Edge function configuration (Deno runtime settings)</li>
@@ -2951,14 +2989,14 @@
     <div class="section-header">
       <span class="section-title">Access &amp; Security</span>
       <span class="section-line"></span>
-      <span class="badge badge-purple">Internal only</span>
+      <span class="badge badge-sa">Internal only</span>
     </div>
 
     <div class="grid-2" style="margin-bottom:32px;">
       <div class="card" style="padding:20px;">
         <div class="card-title">Who can access</div>
         <ul class="feature-list">
-          <li>Role: <strong style="color:#5b21b6;">super_admin</strong> — assigned manually in Supabase by a trusted admin</li>
+          <li>Role: <strong style="color:#8fa01c;">super_admin</strong> — assigned manually in Supabase by a trusted admin</li>
           <li>Not self-serviceable — no sign-up or invitation flow</li>
           <li>MFA required on every login, no exceptions</li>
           <li>Session timeout after 30 minutes of inactivity</li>
