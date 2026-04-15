@@ -423,6 +423,133 @@
     margin: 4px 0;
   }
 
+  /* ── SYSTEM ARCHITECTURE DIAGRAM ── */
+  .sysarch { display: flex; flex-direction: column; gap: 0; }
+
+  .sysarch-tier {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+
+  .sysarch-tier-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.9px;
+  }
+
+  .sysarch-tier-num {
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+    flex-shrink: 0;
+    font-family: var(--mono);
+  }
+
+  .sysarch-tier-body {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    padding: 14px 18px;
+    flex-wrap: wrap;
+  }
+
+  .sysarch-node {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 15px;
+    flex: 1;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .sysarch-node:hover { border-color: var(--border-light); box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+
+  .sysarch-node-icon { font-size: 20px; margin-bottom: 7px; line-height: 1; }
+  .sysarch-node-name { font-size: 12.5px; font-weight: 600; color: var(--text-primary); margin-bottom: 5px; letter-spacing: -0.2px; }
+  .sysarch-node-sub { font-size: 10.5px; color: var(--text-muted); line-height: 1.5; }
+
+  .sysarch-inline-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--border-light);
+    font-size: 20px;
+    flex-shrink: 0;
+    padding: 0 2px;
+  }
+
+  .sysarch-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 2px 0;
+    color: var(--border-light);
+  }
+
+  .sysarch-connector-line {
+    width: 1px;
+    height: 14px;
+    background: var(--border);
+  }
+
+  .sysarch-connector-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    position: relative;
+    padding: 6px 0;
+  }
+
+  .sysarch-connector-spine {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), var(--border), transparent);
+  }
+
+  .sysarch-down-arrows {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 40px;
+    color: var(--text-muted);
+    font-size: 13px;
+    opacity: 0.5;
+  }
+
+  .sysarch-gap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3px 0 3px;
+  }
+
+  .sysarch-gap-bar {
+    width: 60%;
+    height: 1px;
+    background: var(--border);
+    position: relative;
+  }
+
+  .sysarch-gap-arrow {
+    font-size: 12px;
+    color: var(--text-muted);
+    opacity: 0.5;
+    margin-top: 1px;
+  }
+
   /* ── PORTAL SIDEBAR VISUAL ── */
   .portal-layout {
     display: grid;
@@ -687,6 +814,7 @@
 
   <div class="tabs">
     <div class="tab active" onclick="switchTab('overview')">Visual Overview</div>
+    <div class="tab" onclick="switchTab('architecture')">Architecture</div>
     <div class="tab" onclick="switchTab('features')">Features</div>
     <div class="tab" onclick="switchTab('functions')">Functions</div>
     <div class="tab" onclick="switchTab('superadmin')">Super Admin</div>
@@ -1011,6 +1139,255 @@
 
   </div><!-- /tab-overview -->
 
+
+  <!-- ═══════════════════════════════════════════ ARCHITECTURE ═══ -->
+  <div class="tab-panel" id="tab-architecture">
+
+    <div class="section-header" style="margin-top:0;">
+      <span class="section-title">Full System Architecture</span>
+      <span class="section-line"></span>
+      <span class="badge badge-teal">End-to-end flow</span>
+    </div>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:28px;max-width:900px;line-height:1.6;">
+      Every component in the Thrive platform, from wearable hardware through to external services, arranged as a top-to-bottom data flow. Each tier feeds into the next — hover any node for detail.
+    </p>
+
+    <div class="sysarch">
+
+      <!-- ── TIER 1: DEVICE LAYER ── -->
+      <div class="sysarch-tier">
+        <div class="sysarch-tier-header" style="background:rgba(13,148,136,0.06);color:#0a7c72;border-bottom-color:rgba(13,148,136,0.18);">
+          <div class="sysarch-tier-num" style="background:rgba(13,148,136,0.12);color:#0a7c72;">01</div>
+          Hardware &amp; Device Layer
+        </div>
+        <div class="sysarch-tier-body">
+          <div class="sysarch-node" style="border-color:rgba(13,148,136,0.25);">
+            <div class="sysarch-node-icon">⌚</div>
+            <div class="sysarch-node-name">Wearable Device</div>
+            <div class="sysarch-node-sub">HR · SpO₂ · HRV · ECG · Blood Pressure · Blood Glucose · Temp · Sleep · GPS · Body Comp (BIA)</div>
+          </div>
+          <div class="sysarch-inline-arrow">→</div>
+          <div class="sysarch-node" style="border-color:rgba(13,148,136,0.25);">
+            <div class="sysarch-node-icon">📡</div>
+            <div class="sysarch-node-name">Bluetooth LE Bridge</div>
+            <div class="sysarch-node-sub">BLE pairing · auto-reconnect · calibration · watch face · src/native/</div>
+          </div>
+          <div class="sysarch-inline-arrow">→</div>
+          <div class="sysarch-node" style="border-color:rgba(13,148,136,0.25);">
+            <div class="sysarch-node-icon">🗄</div>
+            <div class="sysarch-node-name">Offline Cache</div>
+            <div class="sysarch-node-sub">AsyncStorage · stale-while-revalidate · sync queue · timezone handling</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- connector -->
+      <div class="sysarch-gap"><div class="sysarch-gap-bar"></div><div class="sysarch-gap-arrow">↓</div></div>
+
+      <!-- ── TIER 2: CLIENT INTERFACES ── -->
+      <div class="sysarch-tier">
+        <div class="sysarch-tier-header" style="background:rgba(29,78,216,0.05);color:#1e40af;border-bottom-color:rgba(29,78,216,0.18);">
+          <div class="sysarch-tier-num" style="background:rgba(29,78,216,0.1);color:#1e40af;">02</div>
+          Client Interfaces
+        </div>
+        <div class="sysarch-tier-body">
+          <div class="sysarch-node" style="border-color:rgba(29,78,216,0.22);">
+            <div class="sysarch-node-icon">📱</div>
+            <div class="sysarch-node-name">Mobile App</div>
+            <div class="sysarch-node-sub">React Native / Expo · iOS &amp; Android · 5 core tabs · 60+ screens</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(29,78,216,0.22);">
+            <div class="sysarch-node-icon">💻</div>
+            <div class="sysarch-node-name">Personal Portal</div>
+            <div class="sysarch-node-sub">Next.js · thrive-app.io · deep analytics · trend history · Loop management</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(29,78,216,0.22);">
+            <div class="sysarch-node-icon">🏢</div>
+            <div class="sysarch-node-name">Enterprise Portal</div>
+            <div class="sysarch-node-sub">Next.js · operator console · cohort dashboards · Loop member oversight · billing</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(109,40,217,0.22);">
+            <div class="sysarch-node-icon">🔒</div>
+            <div class="sysarch-node-name">Super Admin Portal</div>
+            <div class="sysarch-node-sub">Next.js · internal only · tenant control · feature flags · impersonation · system health</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- connector -->
+      <div class="sysarch-gap"><div class="sysarch-gap-bar"></div><div class="sysarch-gap-arrow">↓</div></div>
+
+      <!-- ── TIER 3: AUTHENTICATION ── -->
+      <div class="sysarch-tier">
+        <div class="sysarch-tier-header" style="background:rgba(109,40,217,0.05);color:#5b21b6;border-bottom-color:rgba(109,40,217,0.18);">
+          <div class="sysarch-tier-num" style="background:rgba(109,40,217,0.1);color:#5b21b6;">03</div>
+          Authentication &amp; Authorisation
+        </div>
+        <div class="sysarch-tier-body">
+          <div class="sysarch-node" style="border-color:rgba(109,40,217,0.22);flex:2;">
+            <div class="sysarch-node-icon">🔐</div>
+            <div class="sysarch-node-name">Supabase Auth</div>
+            <div class="sysarch-node-sub">Magic link · OAuth (Google / Apple) · MFA · JWT session tokens · RLS role claims · super_admin / enterprise_admin / personal / loop member scopes</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(109,40,217,0.22);">
+            <div class="sysarch-node-icon">🛡</div>
+            <div class="sysarch-node-name">Row Level Security</div>
+            <div class="sysarch-node-sub">PostgreSQL RLS · user-scoped data isolation · role-based policy enforcement at DB level</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(109,40,217,0.22);">
+            <div class="sysarch-node-icon">🔗</div>
+            <div class="sysarch-node-name">Loops Permissions</div>
+            <div class="sysarch-node-sub">Consent-gated access · per-vital permission tiers · revocable at any time · 5 loop types</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- connector -->
+      <div class="sysarch-gap"><div class="sysarch-gap-bar"></div><div class="sysarch-gap-arrow">↓</div></div>
+
+      <!-- ── TIER 4: EDGE / COMPUTE ── -->
+      <div class="sysarch-tier">
+        <div class="sysarch-tier-header" style="background:rgba(180,83,9,0.05);color:#92400e;border-bottom-color:rgba(180,83,9,0.18);">
+          <div class="sysarch-tier-num" style="background:rgba(180,83,9,0.1);color:#92400e;">04</div>
+          Edge Functions &amp; Compute — Deno Runtime
+        </div>
+        <div class="sysarch-tier-body">
+          <div class="sysarch-node" style="border-color:rgba(180,83,9,0.22);">
+            <div class="sysarch-node-icon">🧠</div>
+            <div class="sysarch-node-name">AI Proxy</div>
+            <div class="sysarch-node-sub">ai-insights · ai-vision · secure OpenAI relay · per-tenant model routing · token budgets</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(180,83,9,0.22);">
+            <div class="sysarch-node-icon">📊</div>
+            <div class="sysarch-node-name">Analytics Trigger</div>
+            <div class="sysarch-node-sub">Calls Python analytics service · Spearman rank correlation · vital trend computation</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(180,83,9,0.22);">
+            <div class="sysarch-node-icon">🔔</div>
+            <div class="sysarch-node-name">Notifications</div>
+            <div class="sysarch-node-sub">Push dispatch (APNS / FCM) · alert threshold triggers · Loop activity notifications</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(180,83,9,0.22);">
+            <div class="sysarch-node-icon">🔄</div>
+            <div class="sysarch-node-name">11 Sync Services</div>
+            <div class="sysarch-node-sub">Vitals · sleep · activity · medication · nutrition · wellbeing · Supabase-direct write</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(180,83,9,0.22);">
+            <div class="sysarch-node-icon">📬</div>
+            <div class="sysarch-node-name">Background Jobs</div>
+            <div class="sysarch-node-sub">Scheduled vitality score recalc · daily digest · data retention cleanup · billing checks</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- connector -->
+      <div class="sysarch-gap"><div class="sysarch-gap-bar"></div><div class="sysarch-gap-arrow">↓</div></div>
+
+      <!-- ── TIER 5: CORE BACKEND ── -->
+      <div class="sysarch-tier">
+        <div class="sysarch-tier-header" style="background:rgba(194,65,12,0.05);color:#9a3412;border-bottom-color:rgba(194,65,12,0.18);">
+          <div class="sysarch-tier-num" style="background:rgba(194,65,12,0.1);color:#9a3412;">05</div>
+          Core Backend — Supabase
+        </div>
+        <div class="sysarch-tier-body">
+          <div class="sysarch-node" style="border-color:rgba(194,65,12,0.22);flex:2;">
+            <div class="sysarch-node-icon">🐘</div>
+            <div class="sysarch-node-name">PostgreSQL + RLS</div>
+            <div class="sysarch-node-sub">Primary data store · user vitals · Loop records · consent tables · audit log · SQL migrations · versioned schema</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(194,65,12,0.22);">
+            <div class="sysarch-node-icon">📡</div>
+            <div class="sysarch-node-name">Supabase Realtime</div>
+            <div class="sysarch-node-sub">Live messaging · Loop updates · WebSocket subscriptions · presence</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(194,65,12,0.22);">
+            <div class="sysarch-node-icon">🔁</div>
+            <div class="sysarch-node-name">Loops Engine</div>
+            <div class="sysarch-node-sub">Family · Care · Fitness · Workforce · Enterprise loops · consent state machine</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(194,65,12,0.22);">
+            <div class="sysarch-node-icon">⚙️</div>
+            <div class="sysarch-node-name">Vitality Engine</div>
+            <div class="sysarch-node-sub">Composite score calc · trend analysis · clinical range flags · AI coaching triggers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- connector -->
+      <div class="sysarch-gap"><div class="sysarch-gap-bar"></div><div class="sysarch-gap-arrow">↓</div></div>
+
+      <!-- ── TIER 6: EXTERNAL SERVICES ── -->
+      <div class="sysarch-tier">
+        <div class="sysarch-tier-header" style="background:rgba(4,120,87,0.05);color:#065f46;border-bottom-color:rgba(4,120,87,0.18);">
+          <div class="sysarch-tier-num" style="background:rgba(4,120,87,0.1);color:#065f46;">06</div>
+          External Services &amp; Integrations
+        </div>
+        <div class="sysarch-tier-body">
+          <div class="sysarch-node" style="border-color:rgba(4,120,87,0.22);">
+            <div class="sysarch-node-icon">🤖</div>
+            <div class="sysarch-node-name">OpenAI GPT-4o</div>
+            <div class="sysarch-node-sub">AI health insights · coaching narratives · vision analysis · proxied via Edge Function</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(4,120,87,0.22);">
+            <div class="sysarch-node-icon">📈</div>
+            <div class="sysarch-node-name">Python Analytics</div>
+            <div class="sysarch-node-sub">FastAPI service · Fly.io / Railway · Spearman correlations · advanced vital trend models</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(4,120,87,0.22);">
+            <div class="sysarch-node-icon">🥗</div>
+            <div class="sysarch-node-name">Spoonacular API</div>
+            <div class="sysarch-node-sub">Nutrition data fallback · meal logging · food search · macro breakdown</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(4,120,87,0.22);">
+            <div class="sysarch-node-icon">📲</div>
+            <div class="sysarch-node-name">Push Services</div>
+            <div class="sysarch-node-sub">APNS (iOS) · FCM (Android) · Expo push relay · alert &amp; Loop notifications</div>
+          </div>
+          <div class="sysarch-node" style="border-color:rgba(4,120,87,0.22);">
+            <div class="sysarch-node-icon">💳</div>
+            <div class="sysarch-node-name">Billing / Stripe</div>
+            <div class="sysarch-node-sub">Subscription plans · tenant billing · usage-based credits · webhook events</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /sysarch -->
+
+    <!-- LOOP NETWORK CALLOUT -->
+    <div class="section-header" style="margin-top:36px;">
+      <span class="section-title">Loops — Cross-cutting Permissioned Sharing Network</span>
+      <span class="section-line"></span>
+      <span class="badge badge-amber">Spans all client tiers</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:8px;">
+      <div class="card card-amber" style="padding:14px;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">👨‍👩‍👧</div>
+        <div style="font-size:12.5px;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Family Loop</div>
+        <div style="font-size:11px;color:var(--text-muted);line-height:1.5;">Spouse · parent · child · carer · emergency contact</div>
+      </div>
+      <div class="card card-blue" style="padding:14px;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">🩺</div>
+        <div style="font-size:12.5px;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Care Loop</div>
+        <div style="font-size:11px;color:var(--text-muted);line-height:1.5;">GP · specialist · nurse · pharmacist · allied health</div>
+      </div>
+      <div class="card card-teal" style="padding:14px;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">🏋️</div>
+        <div style="font-size:12.5px;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Fitness Loop</div>
+        <div style="font-size:11px;color:var(--text-muted);line-height:1.5;">PT · coach · nutritionist · wellness advisor</div>
+      </div>
+      <div class="card card-orange" style="padding:14px;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">🏢</div>
+        <div style="font-size:12.5px;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Workforce Loop</div>
+        <div style="font-size:11px;color:var(--text-muted);line-height:1.5;">Supervisor · safety officer · OH nurse · HR</div>
+      </div>
+      <div class="card card-purple" style="padding:14px;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">🏪</div>
+        <div style="font-size:12.5px;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Enterprise Loop</div>
+        <div style="font-size:11px;color:var(--text-muted);line-height:1.5;">Org owner · franchisee admin · practitioner</div>
+      </div>
+    </div>
+
+  </div><!-- /tab-architecture -->
 
   <!-- ═══════════════════════════════════════════ -->
   <!-- TAB: FEATURES -->
