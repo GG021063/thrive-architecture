@@ -693,6 +693,7 @@
     <div class="tab" onclick="switchTab('orgtypes')">Organisation Types</div>
     <div class="tab" onclick="switchTab('roles')">Roles & Permissions</div>
     <div class="tab" onclick="switchTab('tech')">Tech Stack</div>
+    <div class="tab" onclick="switchTab('superadmin')">Super Admin</div>
   </div>
 </div>
 
@@ -2375,6 +2376,231 @@
     </div>
 
   </div><!-- /tab-tech -->
+
+  <!-- ═══════════════════════════════════════════ SUPER ADMIN ═══ -->
+  <div class="tab-panel" id="tab-superadmin">
+
+    <!-- HEADER -->
+    <div class="section-header" style="margin-top:0;">
+      <span class="section-title">Super Admin Portal — Internal Thrive / Optihealth Operations</span>
+      <span class="section-line"></span>
+      <span class="badge badge-purple">Platform control</span>
+    </div>
+    <p style="font-size:13px;color:var(--text-secondary);margin-bottom:28px;max-width:860px;line-height:1.6;">
+      The Super Admin portal is an internal-only web application accessible exclusively to Thrive/Optihealth staff with the <strong style="color:#5b21b6;">super_admin</strong> role. It provides full visibility and control over every tenant, user, configuration setting, and system behaviour across the entire platform — without touching production code.
+    </p>
+
+    <!-- PORTAL MOCK -->
+    <div class="portal-layout" style="margin-bottom:32px;">
+      <div class="portal-sidebar">
+        <div class="portal-sidebar-logo">
+          <div style="width:28px;height:28px;background:linear-gradient(135deg,#6d28d9,#4f46e5);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0;">SA</div>
+          Super Admin
+        </div>
+        <div class="sidebar-group-label">Platform</div>
+        <div class="sidebar-item active"><span class="icon">🏠</span> Dashboard</div>
+        <div class="sidebar-item"><span class="icon">🏢</span> Tenants</div>
+        <div class="sidebar-item"><span class="icon">👤</span> Users</div>
+        <div class="sidebar-item"><span class="icon">🔧</span> Configuration</div>
+        <div class="sidebar-group-label">Control</div>
+        <div class="sidebar-item"><span class="icon">🚩</span> Feature Flags</div>
+        <div class="sidebar-item"><span class="icon">💳</span> Billing &amp; Plans</div>
+        <div class="sidebar-item"><span class="icon">🤖</span> AI Model Routing</div>
+        <div class="sidebar-item"><span class="icon">🔑</span> Permissions</div>
+        <div class="sidebar-group-label">Monitoring</div>
+        <div class="sidebar-item"><span class="icon">📊</span> System Health</div>
+        <div class="sidebar-item"><span class="icon">📋</span> Audit Log</div>
+        <div class="sidebar-item"><span class="icon">🚨</span> Error Tracker</div>
+        <div class="sidebar-item"><span class="icon">📬</span> Queue Inspector</div>
+        <div class="sidebar-group-label">Support</div>
+        <div class="sidebar-item"><span class="icon">🕵️</span> Impersonation</div>
+        <div class="sidebar-item"><span class="icon">🔄</span> Data Tools</div>
+        <div class="sidebar-item"><span class="icon">📣</span> Announcements</div>
+      </div>
+      <div class="portal-main">
+        <div class="portal-page-title">Platform Dashboard</div>
+        <div class="portal-page-sub">Live snapshot across all tenants, users, and services</div>
+        <div class="mini-stat-grid" style="grid-template-columns:repeat(5,1fr);">
+          <div class="mini-stat"><div class="mini-stat-val">148</div><div class="mini-stat-label">Active Tenants</div><div class="mini-stat-delta">+3 this week</div></div>
+          <div class="mini-stat"><div class="mini-stat-val">24.6k</div><div class="mini-stat-label">Total Users</div><div class="mini-stat-delta">+412 today</div></div>
+          <div class="mini-stat"><div class="mini-stat-val">99.97%</div><div class="mini-stat-label">API Uptime</div></div>
+          <div class="mini-stat"><div class="mini-stat-val">38ms</div><div class="mini-stat-label">Avg Latency</div></div>
+          <div class="mini-stat"><div class="mini-stat-val">2</div><div class="mini-stat-label">Open Incidents</div></div>
+        </div>
+        <div class="grid-2" style="gap:12px;margin-top:4px;">
+          <div class="card card-purple" style="padding:16px;">
+            <div class="card-label card-label-purple">Recent Actions</div>
+            <div style="font-size:12px;color:var(--text-secondary);display:flex;flex-direction:column;gap:7px;margin-top:8px;">
+              <div>🏢 <strong>Acme Corp</strong> tenant suspended — billing lapse</div>
+              <div>🚩 Flag <code style="font-size:11px;">ai_coaching_v2</code> enabled for 12 tenants</div>
+              <div>🕵️ Impersonation session started for user #4421</div>
+              <div>💳 Plan override applied — HealthFirst Pro → Enterprise</div>
+              <div>🔧 Edge function timeout raised to 45s globally</div>
+            </div>
+          </div>
+          <div class="card card-blue" style="padding:16px;">
+            <div class="card-label card-label-blue">System Services</div>
+            <div style="font-size:12px;color:var(--text-secondary);display:flex;flex-direction:column;gap:7px;margin-top:8px;">
+              <div>🟢 Supabase Auth — <strong style="color:var(--green);">Healthy</strong></div>
+              <div>🟢 Edge Functions — <strong style="color:var(--green);">Healthy</strong></div>
+              <div>🟢 AI Proxy (OpenAI) — <strong style="color:var(--green);">Healthy</strong></div>
+              <div>🟡 Realtime WS — <strong style="color:var(--amber-bright);">Degraded (AU region)</strong></div>
+              <div>🟢 Background Jobs — <strong style="color:var(--green);">Healthy</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAPABILITY SECTIONS -->
+    <div class="section-header">
+      <span class="section-title">Capability Areas</span>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+
+      <div class="card card-purple">
+        <div class="card-label card-label-purple">Tenant Management</div>
+        <ul class="feature-list" style="margin-top:8px;">
+          <li>Create, configure and onboard new tenant organisations</li>
+          <li>Suspend, reactivate or permanently delete tenants</li>
+          <li>Set tenant-level limits (users, storage, AI credits)</li>
+          <li>View full tenant activity timeline and health score</li>
+          <li>Manage custom domains and white-label settings</li>
+          <li>Assign tenant admins and override their permissions</li>
+        </ul>
+      </div>
+
+      <div class="card card-blue">
+        <div class="card-label card-label-blue">User Management</div>
+        <ul class="feature-list" style="margin-top:8px;">
+          <li>Search and inspect any user account across all tenants</li>
+          <li>Force password reset or MFA re-enrolment</li>
+          <li>Lock, unlock, or permanently delete user accounts</li>
+          <li>Reassign users between tenants or roles</li>
+          <li>View full login history and session log</li>
+          <li>Export user data for compliance or support requests</li>
+        </ul>
+      </div>
+
+      <div class="card card-teal">
+        <div class="card-label card-label-teal">Impersonation</div>
+        <ul class="feature-list" style="margin-top:8px;">
+          <li>Log in as any user for debugging or support — fully audited</li>
+          <li>Impersonation session is time-limited and scoped</li>
+          <li>All actions taken under impersonation are flagged in audit log</li>
+          <li>User receives optional notification of support access</li>
+          <li>One-click exit back to super admin session</li>
+          <li>Cannot impersonate other super admins</li>
+        </ul>
+      </div>
+
+      <div class="card card-amber">
+        <div class="card-label card-label-amber">Feature Flags</div>
+        <ul class="feature-list" style="margin-top:8px;">
+          <li>Toggle features on/off globally or per tenant/user</li>
+          <li>Gradual rollout controls — % of users or tenant cohorts</li>
+          <li>Preview flags for internal QA before public release</li>
+          <li>Flag history with who changed what and when</li>
+          <li>Dependency warnings if a flag affects other flags</li>
+          <li>Emergency kill-switch for any feature platform-wide</li>
+        </ul>
+      </div>
+
+      <div class="card card-green">
+        <div class="card-label card-label-green">Billing &amp; Plans</div>
+        <ul class="feature-list" style="margin-top:8px;">
+          <li>View and edit subscription plan for any tenant</li>
+          <li>Apply manual billing overrides, credits, or discounts</li>
+          <li>Extend trial periods or waive payment failures</li>
+          <li>View invoice history and payment method status</li>
+          <li>Configure plan entitlements — features, limits, AI credits</li>
+          <li>Generate ad-hoc usage reports per tenant</li>
+        </ul>
+      </div>
+
+      <div class="card card-orange">
+        <div class="card-label card-label-orange">AI Model Routing</div>
+        <ul class="feature-list" style="margin-top:8px;">
+          <li>Set default AI model per feature (coaching, insights, chat)</li>
+          <li>Override model per tenant (e.g. enterprise gets GPT-4o)</li>
+          <li>Configure fallback models if primary is unavailable</li>
+          <li>Set per-tenant token budgets and rate limits</li>
+          <li>Monitor AI spend by tenant and feature in real time</li>
+          <li>A/B test model assignments across user cohorts</li>
+        </ul>
+      </div>
+
+      <div class="card card-purple">
+        <div class="card-label card-label-purple">Platform Configuration</div>
+        <ul class="feature-list" style="margin-top:8px;">
+          <li>Global environment settings — timeouts, retry policies, limits</li>
+          <li>Edge function configuration (Deno runtime settings)</li>
+          <li>Manage third-party API keys and integration credentials</li>
+          <li>Configure email/notification templates and delivery providers</li>
+          <li>Maintenance mode — per tenant or platform-wide</li>
+          <li>Data retention policies per tier and region</li>
+        </ul>
+      </div>
+
+      <div class="card card-blue">
+        <div class="card-label card-label-blue">System Health &amp; Monitoring</div>
+        <ul class="feature-list" style="margin-top:8px;">
+          <li>Real-time uptime dashboard across all services</li>
+          <li>API latency, error rate, and throughput graphs</li>
+          <li>Background job queue depths and failure rates</li>
+          <li>Database connection pool and query performance</li>
+          <li>Trigger manual health checks or service restarts</li>
+          <li>Incident timeline — open, in-progress, resolved</li>
+        </ul>
+      </div>
+
+      <div class="card card-teal">
+        <div class="card-label card-label-teal">Audit Log &amp; Compliance</div>
+        <ul class="feature-list" style="margin-top:8px;">
+          <li>Immutable log of every super admin action with timestamp</li>
+          <li>Filter by admin, tenant, action type, or date range</li>
+          <li>Exportable for compliance, SOC2, or internal review</li>
+          <li>Alerting if sensitive actions (impersonation, deletion) are taken</li>
+          <li>Retention configured per regulatory requirement</li>
+          <li>Cannot be edited or deleted — append-only store</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- ACCESS & SECURITY -->
+    <div class="section-header">
+      <span class="section-title">Access &amp; Security</span>
+      <span class="section-line"></span>
+      <span class="badge badge-purple">Internal only</span>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:32px;">
+      <div class="card" style="padding:20px;">
+        <div class="card-title">Who can access</div>
+        <ul class="feature-list">
+          <li>Role: <strong style="color:#5b21b6;">super_admin</strong> — assigned manually in Supabase by a trusted admin</li>
+          <li>Not self-serviceable — no sign-up or invitation flow</li>
+          <li>MFA required on every login, no exceptions</li>
+          <li>Session timeout after 30 minutes of inactivity</li>
+          <li>IP allowlist enforced — office / VPN addresses only</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:20px;">
+        <div class="card-title">How it's protected</div>
+        <ul class="feature-list">
+          <li>Separate Next.js app — never shipped with customer-facing portals</li>
+          <li>All API calls go through Supabase RLS with super_admin role check</li>
+          <li>Destructive actions (delete tenant, mass export) require secondary confirmation + reason</li>
+          <li>All actions written to append-only audit table — cannot be suppressed</li>
+          <li>No production DB access directly — all ops via controlled Edge Functions</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /tab-superadmin -->
 
 </div><!-- /content -->
 
